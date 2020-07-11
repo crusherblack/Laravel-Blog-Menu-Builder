@@ -11,6 +11,9 @@ class PostController extends Controller
 {
     public function openPage($slug){
         $post = Post::where('slug', $slug)->first();
+
+        if(!$post) return view('layouts.404');
+
         return view('page.index', compact('post'));
     }
 
